@@ -1,0 +1,94 @@
+Version check
+npm -v
+node -v
+
+# Create a folder for your control
+mkdir MyPcf && cd MyPcf
+
+# Scaffold the PCF project (React, field template)
+pac pcf init --namespace Contoso.Controls --name MyPcfControl --template field/dataset  --framework react -npm(npm for npm install after creating)
+pac pcf init --namespace MultiSelectControl --name MultiSelectControl --template dataset --framework react -npm
+
+# Install dependencies
+npm install
+
+# Build the control
+npm run build
+
+To upgrade v18.2 react
+npm install react@18.2.0 react-dom@18.2.0
+npm install react@latest react-dom@latest  -- latest version
+npm install @fluentui/react-components @fluentui/react-icons   - fluent2
+npm install --save-dev @types/react@18 @types/react-dom@18 - update dom as well
+
+# (Optional) Run local test harness
+npm start
+
+# Go up one level and create a solution folder
+cd ..
+mkdir MultiSelectSolution && cd MultiSelectSolution
+
+# Initialize the solution (set your publisher name/prefix)
+pac solution init --publisher-name "Contoso" --publisher-prefix cts --solution-name MultiSelectSolution
+
+pac solution init --publisher-name "DefaultPublisherbhcrmdev" --publisher-prefix new
+cd C:\path\to\Solutions
+pac solution init --publisher-name "globalriskmanagement" --publisher-prefix grm
+pac solution add-reference --path "../MultiselectLookup"
+
+
+# Add a reference to your PCF project
+pac solution add-reference --path ../MyPcf
+cd C:\path\to\Solutions\MySolution
+pac solution add-reference --path "C:\Users\sith.tcs\Documents\A- Multiselect sol\MultiSelectControl"
+pac solution add-reference --path "..\MultiSelectControl"
+
+msbuild /p:configuration=Release
+msbuild /t:build /restore /p:Configuration=Release
+
+dotnet build --configuration Release
+
+
+# Build both managed and unmanaged solution ZIPs
+pac solution build --packageType Both --outputDirectory ./out
+# From inside your solution folder
+pac solution pack --zipFile ./out/MySolution.zip --folder . --packageType Both
+
+
+  https://bh-crm-play.crm4.dynamics.com/
+pac auth create --url https://bh-crm-play.crm4.dynamics.com/
+# Authenticate to your environment
+pac auth create --url https://<yourorg>.crm.dynamics.com
+# Verify connection
+pac org who
+
+pac solution import --path ./out/MySolution.zip
+
+While developing, instead of rebuilding the whole solution every time, you can push updates directly
+cd MyPcf
+pac pcf push
+
+Ways to exit
+Keyboard shortcut (most common): Press Ctrl + C -- Y
+
+you don’t inherit Dynamics 365’s React version, but yes — you should consider compatibility
+
+
+Fluent UI -
+npm install @fluentui/react-components
+Optional Hooks
+npm install @fluentui/react-hooks
+
+
+# Option 1: Rename folder first
+cd C:\Users\sith.tcs\Documents
+rename MySolution MyFluentMultiSelectPCF
+cd MyFluentMultiSelectPCF
+pac solution init --publisher-name "DefaultPublisherbhcrmdev" --publisher-prefix new
+
+# Option 2: Use outputDirectory
+pac solution init --publisher-name "DefaultPublisherbhcrmdev" --publisher-prefix new --outputDirectory MyFluentMultiSelectPCF
+
+
+
+                                                                                 
