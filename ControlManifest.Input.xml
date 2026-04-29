@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+	<control namespace="MultiSelectControl" constructor="MultiSelectControl" version="0.0.1" display-name-key="MultiSelectControl" description-key="MultiSelectControl description" control-type="virtual" >
+
+		<external-service-usage enabled="false">
+		</external-service-usage>
+
+		<data-set name="relatedRecordsDataset" display-name-key="Dataset_Display_Key">
+		</data-set>
+
+		<property name="relationshipName" display-name-key="relationshipName_Key" description-key="relationshipName_Desc" of-type="SingleLine.Text" usage="input" required="true" />
+		<property name="controlImageURl" display-name-key="controlImageURl_Key" description-key="controlImageURl_Desc" of-type="SingleLine.Text" usage="input" required="false"/>
+		<property name="labelText" display-name-key="Label Text" description-key="Label_Text_Desc" of-type="SingleLine.Text" usage="input" required="false" />
+		<property name="chipWidth" display-name-key="Chip Width(Ex:150px)" description-key="ChipWidth_Desc" of-type="SingleLine.Text" usage="input" required="false" />
+		<resources>
+			<code path="index.ts" order="1"/>
+			<platform-library name="React" version="16.14.0" />
+			<platform-library name="Fluent" version="9.46.2" />
+		</resources>
+
+		<feature-usage>
+			<uses-feature name="Utility" required="true" />
+			<uses-feature name="WebAPI" required="true" />
+		</feature-usage>
+
+	</control>
+</manifest>

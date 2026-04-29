@@ -1,0 +1,14 @@
+/*
+*This is auto generated from the ControlManifest.Input.xml file
+*/
+
+// Define IInputs and IOutputs Type. They should match with ControlManifest.
+export interface IInputs {
+    relationshipName: ComponentFramework.PropertyTypes.StringProperty;
+    controlImageURl: ComponentFramework.PropertyTypes.StringProperty;
+    labelText: ComponentFramework.PropertyTypes.StringProperty;
+    chipWidth: ComponentFramework.PropertyTypes.StringProperty;
+    relatedRecordsDataset: ComponentFramework.PropertyTypes.DataSet;
+}
+export interface IOutputs {
+}
